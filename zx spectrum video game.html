@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>zxspectrum</title>
+</head>
+<body>
+ <h1 id="heading">>_<</h1>
+ <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+ <script>
+
+
+
+	
+
+// //влево
+	var leftOffset = 0;
+var downOffset = 0;
+var rightOffset = 800;
+var upOffset = 800;
+
+ var moveHeading = function (){
+
+
+ $("#heading").offset({left:leftOffset});
+ leftOffset++;
+ if (leftOffset > 800) {
+$("#heading").offset({top:downOffset,left:800});
+ downOffset++;
+ if (downOffset > 800) {
+$("#heading").offset({top:800,left:rightOffset});
+ rightOffset--;
+ if (rightOffset <0) {
+$("#heading").offset({top:upOffset,left:0});
+ upOffset--;
+ if (upOffset <0) {
+upOffset = 800;
+leftOffset = 0;
+downOffset = 0;
+rightOffset = 800;
+
+ }
+ }
+ }
+ }
+
+} 
+
+
+var xx=setInterval(moveHeading,10)
+for(let i=0;i<999;i++){
+$("h1").fadeOut(3000).fadeIn(1500)
+}
+
+var otschet=9;
+var speed=10
+var najimalka = function (event) {
+	
+    $("h1").text(otschet)
+    --otschet;
+    clearInterval(xx)
+setInterval(moveHeading,speed);
+speed=speed-10;
+
+if (otschet<0){
+	$("h1").text("GOOD JOB!");
+	alert("YOU WIN!");
+	clearInterval(xx);
+
+}
+			
+			console.log(otschet)
+			};
+
+ $("h1").click(najimalka);
+
+
+		
+
+
+// var clickHandler2 = function (event) {
+// 	setInterval(moveHeading,1)
+// };
+//  $("html").click(clickHandler2);
+
+ </script>
+</body>
+</html>
